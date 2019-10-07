@@ -2,6 +2,10 @@
   font-family: "微軟正黑體";
 }
 
+tr {
+  background-color: aliceblue;
+}
+
 tr:nth-child(odd){
 	background-color: rgb(240, 240, 240);
 }
