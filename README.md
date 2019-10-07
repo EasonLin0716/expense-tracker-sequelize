@@ -9,6 +9,7 @@ A expense tracker for daddys to record their private or secret expenses.
 3. Use filter button to see your different kind of expenses
 
 ## Preview
+![Cover](https://github.com/EasonLin0716/expense-tracker-sequelize/blob/master/public/img/Cover.JPG)
 
 
 ## Environment set up
