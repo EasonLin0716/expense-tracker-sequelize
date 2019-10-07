@@ -44,14 +44,10 @@ app.use((req, res, next) => {
 })
 
 /* -----route setting----- */
-// app.use('/', require('./routes/home'))
+app.use('/', require('./routes/home'))
 // app.use('/records', require('./routes/record'))
 // app.use('/users', require('./routes/user'))
 // app.use('/auth', require('./routes/auths'))
-
-app.get('/', (req, res) => {
-  res.render('index')
-})
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('app.js is running')
