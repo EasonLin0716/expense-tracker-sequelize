@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const Records = require('../models/record')
+const db = require('../models')
+const Record = db.Record
+const User = db.User
 const { authenticated } = require('../config/auth')
 
 // 列出全部 Record
@@ -25,18 +27,18 @@ router.post('/', authenticated, (req, res) => {
     return res.redirect('/records/new')
   }
 
-  const records = new Records({
+  Record.create({
     name: req.body.name,
-    merchant: req.body.merchant,
-    date: req.body.date,
     category: req.body.category,
+    merchant: req.body.merchant,
     amount: req.body.amount,
-    userId: req.user._id
+    date: req.body.date,
+    userId: req.user.id
   })
-    .save(err => {
-      if (err) return console.error(err)
-      res.redirect('/')
+    .then((record) => {
+      return res.redirect('/')
     })
+    .catch((error) => { return res.status(422).json(error) })
 })
 // 修改 Record 頁面
 router.get('/:id/edit', authenticated, (req, res) => {

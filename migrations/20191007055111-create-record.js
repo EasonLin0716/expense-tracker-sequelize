@@ -23,6 +23,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      date: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -30,6 +34,14 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        reference: {
+          model: 'Users',
+          key: 'id'
+        }
       }
     });
   },
