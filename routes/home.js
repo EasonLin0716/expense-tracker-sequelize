@@ -6,7 +6,7 @@ const Record = db.Record
 const User = db.User
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-// const sumAmount = require('../public/javascripts/sumAmount')
+const sumAmount = require('../public/javascripts/sumAmount')
 const { authenticated } = require('../config/auth')
 
 // 首頁
@@ -25,7 +25,10 @@ router.get('/', authenticated, (req, res) => {
         where: { UserId: req.user.id, category: { [Op.like]: selectedCategory }, date: { [Op.like]: `_____${selectedMonth}___` } }
       })
     })
-    .then((records) => { return res.render('index', { records, queryMonth: req.query.month, queryCategory: req.query.category }) })
+    .then((records) => {
+      let totalAmount = sumAmount(records)
+      return res.render('index', { records, totalAmount, queryMonth: req.query.month, queryCategory: req.query.category })
+    })
     .catch((error) => { return res.status(422).json(error) })
 })
 
