@@ -1,0 +1,157 @@
+* {
+  font-family: "微軟正黑體";
+}
+
+tr:nth-child(odd){
+	background-color: rgb(240, 240, 240);
+}
+
+/* login */
+
+#login button, #login #facebook, #login #google {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+#register a {
+  font-weight: 800;
+}
+
+/* index */
+
+#dropdown * {
+  font-size: 24px;
+}
+
+#total-amount span {
+  padding-right: 32px;
+  font-size: 24px;
+}
+
+#total-amount h1 {
+  font-size: 64px;
+  color: rgb(255, 145, 0);
+}
+
+#records #amount {
+  font-size: 36px;
+}
+
+#records #merchant {
+  font-size: 24px;
+}
+
+#records th i {
+  font-size: 48px;
+  color: rgb(125, 200, 255);
+}
+
+#records th, #records td {
+  vertical-align: middle;
+}
+
+#records #modify {
+  background-color: #fff;
+  border: none;
+  width: 20%; 
+}
+
+#records #modify * {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* new and edit */
+
+#create {
+  font-size: 36px;
+}
+
+#new #title h1, #edit #title h1 {
+  width:80%;
+  font-size: 48px;
+}
+
+#date #datetimepicker4 i {
+  font-size: 24px;
+  color: rgb(160, 160, 160)
+}
+
+@media screen and (max-width:768px) {
+  h3 {
+    margin: 0;
+  }
+
+  #total-amount span {
+    align-self: center;
+  }
+  
+  #total-amount h1 {
+    font-size: 56px;
+  }
+
+  #records #amount, #records #category, #dropdown *, #records #name-and-date h3, #create, #records #category i {
+    font-size: 24px;
+  }
+
+  #modify i {
+    display: none;
+  }
+
+  #records #merchant i {
+    font-size: 20px;
+  }
+
+  #new #title h1, #edit #title h1 {
+    font-size: 36px;
+  }
+
+
+}
+
+@media screen and (max-width:540px) {  
+
+  #total-amount span {
+    padding-right: 20px;
+    font-size: 20px;
+  }
+
+  #total-amount h1 {
+    font-size: 48px;
+  }
+
+  #records * {
+    padding: 0;
+  }
+
+  #records #category {
+    padding-left: 6px;
+  }
+
+  #records #amount, #records #category, #dropdown *, #records #name-and-date h3, #create, #records #category i {
+    font-size: 16px;
+  }
+
+  #records #merchant {
+    display: none;
+  }
+
+  #modify a {
+    margin: 20px 0;
+  }
+
+  #modify i {
+    display: inline-block;
+    font-size: 32px;
+  }
+
+  #modify #edit, #modify #delete {
+    display: none;
+  }
+
+  #new #title h1, #edit #title h1 {
+    font-size: 24px;
+    width: 60%;
+  }
+
+}

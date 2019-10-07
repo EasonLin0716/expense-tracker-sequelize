@@ -1,0 +1,47 @@
+{{!-- ./views/layouts/main.hbs --}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">家庭記帳本</a>
+    {{#if isAuthenticated}}
+    <a href="/users/logout" class="btn btn-danger">Logout</a>
+    {{else}}
+    <a href="/users/login" class="btn btn-primary">Login</a>
+    {{/if}}
+  </nav>
+
+  {{{body}}}
+
+
+  <script src="/javascripts/jquery-3.4.1.min.js"></script>
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+  <script src="/javascripts/moment.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+  {{!-- new.handlebars date jquery script --}}
+  <script type="text/javascript">
+    $(function () {
+      $('#datetimepicker4').datetimepicker({
+        format: 'YYYY/MM/DD'
+      })
+    })
+  </script>
+  <script src="/javascripts/confirm-delete.js"></script>
+</body>
+
+</html>
