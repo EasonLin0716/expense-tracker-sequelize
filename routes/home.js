@@ -7,7 +7,7 @@ const Record = db.Record
 const { authenticated } = require('../config/auth')
 
 // 首頁
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   res.render('index')
 })
 

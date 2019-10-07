@@ -33,7 +33,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-// require('./config/passport')(passport)
+require('./config/passport')(passport)
 app.use(flash())
 app.use((req, res, next) => {
   res.locals.user = req.user
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/home'))
 // app.use('/records', require('./routes/record'))
 app.use('/users', require('./routes/user'))
-// app.use('/auth', require('./routes/auths'))
+app.use('/auth', require('./routes/auths'))
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('app.js is running')
