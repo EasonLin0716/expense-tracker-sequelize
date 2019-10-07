@@ -43,26 +43,36 @@ router.post('/', authenticated, (req, res) => {
 // 修改 Record 頁面
 router.get('/:id/edit', authenticated, (req, res) => {
   console.log(`req.params.id: ${req.params.id}`)
-  Records.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
-    if (err) return console.error(err)
-    res.render('edit', { record })
-  })
+  User.findByPk(req.user.id)
+    .then((user) => {
+      if (!user) throw new Error("user not found")
+      return Record.findOne({
+        where: {
+          Id: req.params.id,
+          UserId: req.user.id,
+        }
+      })
+    })
+    .then((record) => { return res.render('edit', { record: record }) })
 })
 // 修改 Record
 router.put('/:id', authenticated, (req, res) => {
-  console.log(`req.params.id: ${req.params.id}`)
-  Records.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
-    if (err) return console.error(err)
+  Record.findOne({
+    where: {
+      Id: req.params.id,
+      userId: req.user.id,
+    }
+  }).then((record) => {
     record.name = req.body.name
-    record.merchant = req.body.merchant
     record.category = req.body.category
-    record.date = req.body.date
+    record.merchant = req.body.merchant
     record.amount = req.body.amount
-    record.save(err => {
-      if (err) return console.error(err)
-      return res.redirect('/')
-    })
+    record.date = req.body.date
+    return record.save()
   })
+    .then((record) => {
+      res.redirect('/')
+    }).catch((error) => { return res.status(422).json(error) })
 })
 // 刪除 Record
 router.delete('/:id', authenticated, (req, res) => {
