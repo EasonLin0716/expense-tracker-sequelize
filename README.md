@@ -20,7 +20,7 @@ A expense tracker for daddys to record their private or secret expenses.
 1. Open your terminal and enter: 
 
 ```
-   https://github.com/EasonLin0716/expense-tracker.git
+   https://github.com/EasonLin0716/expense-tracker-sequelize.git
 ```
 
 2. Register your own secret key at Facebook and Google:
