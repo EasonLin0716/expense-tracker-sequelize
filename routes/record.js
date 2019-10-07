@@ -76,13 +76,18 @@ router.put('/:id', authenticated, (req, res) => {
 })
 // 刪除 Record
 router.delete('/:id', authenticated, (req, res) => {
-  Records.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
-    if (err) return console.error(err)
-    record.remove(err => {
-      if (err) return console.error(err)
-      return res.redirect('/')
+  User.findByPk(req.user.id)
+    .then((user) => {
+      if (!user) throw new Error("user not found")
+      return Record.destroy({
+        where: {
+          UserId: req.user.id,
+          Id: req.params.id
+        }
+      })
     })
-  })
+    .then((record) => { return res.redirect('/') })
+    .catch((error) => { return res.status(422).json(error) })
 })
 
 module.exports = router
