@@ -54,6 +54,7 @@ router.get('/:id/edit', authenticated, (req, res) => {
       })
     })
     .then((record) => { return res.render('edit', { record: record }) })
+    .catch((error) => { return res.status(422).json(error) })
 })
 // 修改 Record
 router.put('/:id', authenticated, (req, res) => {

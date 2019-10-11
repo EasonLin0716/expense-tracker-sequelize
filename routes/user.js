@@ -9,7 +9,15 @@ const bcrypt = require('bcryptjs')
 
 // 登入頁面
 router.get('/login', (req, res) => {
-  res.render('login')
+  try {
+    return res.render('login')
+  }
+  catch {
+    err => {
+      console.error('something went wrong: ', err)
+      return res.render('error')
+    }
+  }
 })
 
 // 登入檢查
@@ -23,7 +31,15 @@ router.post('/login', (req, res, next) => {
 
 // 註冊頁面
 router.get('/register', (req, res) => {
-  res.render('register')
+  try {
+    return res.render('register')
+  }
+  catch {
+    err => {
+      console.error('something went wrong: ', err)
+      return res.render('error')
+    }
+  }
 })
 
 // 註冊檢查
@@ -77,7 +93,15 @@ router.post('/register', (req, res) => {
 })
 // logout
 router.get('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/users/login')
+  try {
+    req.logout()
+    return res.redirect('/users/login')
+  }
+  catch {
+    err => {
+      console.error('something went wrong: ', err)
+      return res.render('error')
+    }
+  }
 })
 module.exports = router
