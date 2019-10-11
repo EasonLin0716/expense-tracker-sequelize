@@ -12,14 +12,18 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  try {
-    sequelize = new Sequelize(config.database, config.username, config.password, config);
-    console.log('db connected!')
-  }
-  catch (error) {
-    console.error(`Failed to connect to db with error ${error}!`)
-  }
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+// 驗證資料庫
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:\n', err);
+  });
 
 fs
   .readdirSync(__dirname)
